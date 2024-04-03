@@ -28,7 +28,6 @@ class SvatkyTest {
      */
     @Test
     void jeVSeznamu() {
-        //TODO Otestovat, že najde v seznamu existující jméno a nenajde neexistující jméno
         Svatky svatky = new Svatky();
         assertTrue(svatky.jeVSeznamu("Nataša"));
         assertFalse(svatky.jeVSeznamu("Eva"));
@@ -39,7 +38,6 @@ class SvatkyTest {
      */
     @Test
     void getPocetJmen() {
-        //TODO Otestovat, že vrací počet jmen, která máme v seznamu
         Svatky svatky = new Svatky();
         assertEquals(37, svatky.getPocetJmen());
     }
@@ -49,7 +47,6 @@ class SvatkyTest {
      */
     @Test
     void getSeznamJmen() {
-        //TODO Zkontrolovat, že seznam jmen má správný počet položek.
         Svatky svatky = new Svatky();
         Set<String> seznamJmen = svatky.getSeznamJmen();
         assertEquals(37, seznamJmen.size());
@@ -60,8 +57,8 @@ class SvatkyTest {
      */
     @Test
     void pridejSvatekDenMesicInt() {
-        //TODO Otestuje, že je jméno v seznamu svátků a že má přiřazen správný den
         Svatky svatky = new Svatky();
+        svatky.pridejSvatek("Nataša", 18, 5);
         assertTrue(svatky.jeVSeznamu("Nataša"));
         assertEquals(MonthDay.of(5, 18), svatky.vratKdyMaSvatek("Nataša"));
     }
@@ -71,10 +68,10 @@ class SvatkyTest {
      */
     @Test
     void pridejSvatekDenMesicMonth() {
-        //TODO Otestuje, že je jméno v seznamu svátků a že má přiřazen správný den
         Svatky svatky = new Svatky();
+        svatky.pridejSvatek("Nataša", 18, Month.MAY);
         assertTrue(svatky.jeVSeznamu("Nataša"));
-        assertEquals(MonthDay.of(Month.MAY,18), svatky.vratKdyMaSvatek("Nataša"));
+        assertEquals(MonthDay.of(Month.MAY, 18), svatky.vratKdyMaSvatek("Nataša"));
     }
 
     /**
@@ -82,8 +79,8 @@ class SvatkyTest {
      */
     @Test
     void pridejSvatekMonthDay() {
-        //TODO Otestuje, že je jméno v seznamu svátků a že má přiřazen správný den
         Svatky svatky = new Svatky();
+        svatky.pridejSvatek("Nataša", (MonthDay.of(5, 18)));
         assertTrue(svatky.jeVSeznamu("Nataša"));
         assertEquals(MonthDay.of(Month.of(5), 18), svatky.vratKdyMaSvatek("Nataša"));
     }
@@ -93,11 +90,13 @@ class SvatkyTest {
      */
     @Test
     void smazSvatek() {
-        //TODO Zkontrolovat, že po smazání bude počet svátků odpovídat novému počtu.
         Svatky svatky = new Svatky();
-        assertTrue(svatky.jeVSeznamu("Nataša"));
-        svatky.smazSvatek("Nataša");
+        String jmenoKeSmazani = "Nataša";
+        assertTrue(svatky.jeVSeznamu(jmenoKeSmazani));
+        svatky.smazSvatek(jmenoKeSmazani);
+        boolean jeJmenoSmazane = svatky.jeVSeznamu(jmenoKeSmazani);
         Set<String> seznamJmen = svatky.getSeznamJmen();
         assertEquals(36, seznamJmen.size());
+        assertFalse(jeJmenoSmazane);
     }
 }
