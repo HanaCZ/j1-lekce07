@@ -58,9 +58,9 @@ class SvatkyTest {
     @Test
     void pridejSvatekDenMesicInt() {
         Svatky svatky = new Svatky();
-        svatky.pridejSvatek("Nataša", 18, 5);
-        assertTrue(svatky.jeVSeznamu("Nataša"));
-        assertEquals(MonthDay.of(5, 18), svatky.vratKdyMaSvatek("Nataša"));
+        svatky.pridejSvatek("Ema", 8, 4);
+        assertTrue(svatky.jeVSeznamu("Ema"));
+        assertEquals(MonthDay.of(4, 8), svatky.vratKdyMaSvatek("Ema"));
     }
 
     /**
@@ -69,9 +69,9 @@ class SvatkyTest {
     @Test
     void pridejSvatekDenMesicMonth() {
         Svatky svatky = new Svatky();
-        svatky.pridejSvatek("Nataša", 18, Month.MAY);
-        assertTrue(svatky.jeVSeznamu("Nataša"));
-        assertEquals(MonthDay.of(Month.MAY, 18), svatky.vratKdyMaSvatek("Nataša"));
+        svatky.pridejSvatek("Ema", 8, Month.APRIL);
+        assertTrue(svatky.jeVSeznamu("Ema"));
+        assertEquals(MonthDay.of(Month.APRIL, 8), svatky.vratKdyMaSvatek("Ema"));
     }
 
     /**
@@ -80,9 +80,9 @@ class SvatkyTest {
     @Test
     void pridejSvatekMonthDay() {
         Svatky svatky = new Svatky();
-        svatky.pridejSvatek("Nataša", (MonthDay.of(5, 18)));
-        assertTrue(svatky.jeVSeznamu("Nataša"));
-        assertEquals(MonthDay.of(Month.of(5), 18), svatky.vratKdyMaSvatek("Nataša"));
+        svatky.pridejSvatek("Ema", (MonthDay.of(4, 8)));
+        assertTrue(svatky.jeVSeznamu("Ema"));
+        assertEquals(MonthDay.of(Month.of(4), 8), svatky.vratKdyMaSvatek("Ema"));
     }
 
     /**
